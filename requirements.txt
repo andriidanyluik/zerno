@@ -1,0 +1,17 @@
+branca==0.4.2
+asgiref==3.6.0
+Django==4.2
+django-ckeditor==6.5.1
+django-js-asset==2.0.0
+django-taggit==3.1.0
+gunicorn==20.1.0
+MarkupSafe==2.1.2
+psycopg2-binary==2.9.6
+sqlparse==0.4.4
+psycopg2>=2.8.6,<2.8.7
+whitenoise==6.4.0
+openpyxl
+#folium==0.12.1
+django-crispy-forms
+geopy
+crispy-bootstrap4

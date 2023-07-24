@@ -1,0 +1,46 @@
+version: "3"
+services:
+  web:
+    restart: always
+    build: .
+    ports:
+      - "8000:8000"
+    command: gunicorn --workers=2 mysite.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./mysite:/app
+    environment:
+      - DB_HOST=db
+      - DB_NAME=mydb-dev
+      - DB_USER=vinhle
+      - DB_PASS=password
+    depends_on:
+      - db
+      - osrm
+
+  db:
+    restart: always
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_DB=mydb-dev
+      - POSTGRES_USER=vinhle
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - tutorial-volume:/var/lib/postgresql/data
+
+  osrm:
+    image: osrm/osrm-backend:latest
+    command: osrm-routed --algorithm mld /data/ukraine-latest.osrm
+    volumes:
+      - ./osrm:/data
+    ports:
+      - "5000:5000"
+    networks:
+      - osrm-network
+
+networks:
+  osrm-network:
+
+volumes:
+  tutorial-volume:

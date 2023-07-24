@@ -1,0 +1,16 @@
+{% extends "blog/base2.html" %}
+{%load crispy_forms_tags %}
+{% block title %}Зерновоз{% endblock %}
+{% block content %}
+<section class="hero-home">
+    <div class="container py-2 text-dark z-index-20">
+<h3>Маршут З {{ city_from_name }} до {{ city_name_to }}, Дистанція {{ distance }} км.</h3>
+
+
+<iframe srcdoc="{{ my_map }}" width="100%" height="500" frameborder="0"></iframe>
+<h3>Розрахунок тарифу</h3>
+<p>Загальна сума: <b>{{ cost }}</b></p>
+</div>
+</section>
+
+{% endblock %}

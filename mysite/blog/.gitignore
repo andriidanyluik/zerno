@@ -1,0 +1,3 @@
+osrm/
+.venv/
+mysite/blog/migrations/
